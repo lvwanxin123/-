@@ -1,0 +1,6 @@
+import {NextResponse} from "next/server";
+import {createClient} from "@/lib/supabase/server";
+const LIMIT=5;
+function today(){return new Date().toISOString().slice(0,10)}
+function active(sub:{status?:string|null;current_period_end?:string|null}|null){return sub?.status==="active"&&(!sub.current_period_end||new Date(sub.current_period_end).getTime()>Date.now())}
+export async function POST(){try{const supabase=createClient();const {data:{user}}=await supabase.auth.getUser();if(!user)return NextResponse.json({allowed:false,message:"请先登录后再使用提示词。"},{status:401});const {data:sub}=await supabase.from("subscriptions").select("status,current_period_end").eq("user_id",user.id).maybeSingle();if(active(sub))return NextResponse.json({allowed:true,isPro:true});const date=today();const {data:usage}=await supabase.from("daily_usage").select("count").eq("user_id",user.id).eq("use_date",date).maybeSingle();const count=usage?.count??0;if(count>=LIMIT)return NextResponse.json({allowed:false,message:"今日次数已用完，明日恢复或升级专业版。"});const next=count+1;const {error}=await supabase.from("daily_usage").upsert({user_id:user.id,use_date:date,count:next},{onConflict:"user_id,use_date"});if(error)throw error;return NextResponse.json({allowed:true,remaining:Math.max(0,LIMIT-next)})}catch(error){console.error(error);return NextResponse.json({allowed:false,message:"使用次数记录失败。"},{status:500})}}

@@ -1,0 +1,2 @@
+@import "tailwindcss";
+:root{--background:#fff;--foreground:#18181b}body{margin:0;background:var(--background);color:var(--foreground);font-family:Arial,"Microsoft YaHei",sans-serif}*{box-sizing:border-box}

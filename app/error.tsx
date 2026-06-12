@@ -1,0 +1,2 @@
+"use client";
+export default function Error({reset}:{error:Error;reset:()=>void}){return <main className="flex min-h-screen items-center justify-center bg-zinc-50 px-4"><section className="rounded-2xl bg-white p-8 text-center shadow"><h1 className="text-2xl font-bold">页面加载出错</h1><p className="mt-3 text-zinc-500">请稍后重试。</p><button onClick={reset} className="mt-6 rounded-full bg-[#6366f1] px-6 py-3 text-white">重新加载</button></section></main>}

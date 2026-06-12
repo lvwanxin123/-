@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound(){return <main className="flex min-h-screen items-center justify-center bg-zinc-50 px-4"><section className="rounded-2xl bg-white p-8 text-center shadow-sm"><p className="font-semibold text-[#6366f1]">404</p><h1 className="mt-3 text-2xl font-bold">页面没有找到</h1><Link href="/" className="mt-6 inline-flex rounded-full bg-[#6366f1] px-6 py-3 text-white">返回首页</Link></section></main>}

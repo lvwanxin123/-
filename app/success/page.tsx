@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function Success(){return <main className="flex min-h-screen items-center justify-center bg-zinc-50 px-4"><section className="rounded-2xl bg-white p-8 text-center shadow"><h1 className="text-3xl font-bold">升级成功</h1><p className="mt-3 text-zinc-600">欢迎使用专业版。</p><Link href="/" className="mt-6 inline-flex rounded-full bg-[#6366f1] px-6 py-3 text-white">返回首页</Link></section></main>}

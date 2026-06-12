@@ -1,3 +1,11 @@
 # PromptBox
 
-PromptBox AI 提示词工具箱。
+AI 提示词工具箱。免费用户每天限量使用，专业版无限使用。
+
+## 部署环境变量
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `NEXT_PUBLIC_SITE_URL`
+- `ADMIN_EMAILS=2543804778@qq.com`
